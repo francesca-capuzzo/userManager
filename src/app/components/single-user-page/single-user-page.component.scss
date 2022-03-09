@@ -1,0 +1,34 @@
+.container{
+    display: grid;
+    grid-template-columns: 2;
+    grid-template-rows: 50% 50%;
+    background-color: aquamarine;
+    align-items: center;
+    grid-template-areas: 'data address'
+                         'data company';
+
+}
+
+.user-data{
+    grid-area: data;
+    display: flex;
+    flex-direction: column;
+    background-color: red;
+}
+
+.user-address{
+    grid-area: address;
+    background-color: blue;
+}
+
+.user-company{
+    grid-area: comapany;
+    background-color: green;
+}
+
+.button{
+    position: relative;
+    left:45%;
+    width: 200px;
+    height: 50px;
+}

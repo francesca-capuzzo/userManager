@@ -8,17 +8,25 @@ import { UserDetailComponent } from './components/user-detail/user-detail.compon
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { AddressCardComponent } from './components/address-card/address-card.component';
 
+import { HttpClientModule } from '@angular/common/http';
+import { SingleUserPageComponent } from './components/single-user-page/single-user-page.component';
+import { PostsComponent } from './components/posts/posts.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
     UsersPageComponent,
     UserDetailComponent,
     PageNotFoundComponent,
-    AddressCardComponent
+    AddressCardComponent,
+    SingleUserPageComponent,
+    PostsComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

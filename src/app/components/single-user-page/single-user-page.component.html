@@ -1,0 +1,29 @@
+<div class="container" *ngIf="user">
+
+    <div class="user-data">
+        <span>{{user.name}}</span>
+        <span>{{user.username}}</span>
+        <span>{{user.email}}</span>
+        <span>{{user.phone}}</span>
+        <span>{{user.website}}</span>
+    </div>
+    <div>
+        <div class="user-address">
+            <span>{{user.address.street}}</span>
+            <span>{{user.address.suite}}</span>
+            <span>{{user.address.city}}</span>
+            <span>{{user.address.zipcode}}</span>
+        </div>
+        <div class="user-company">
+            <span>{{user.company.name}}</span>
+            <span>{{user.company.catchPhrase}}</span>
+            <span>{{user.company.bs}}</span>
+        </div>
+    </div>
+</div>
+
+<button class="button" (click)="loadPosts()">Open Posts</button>
+<div class="container-post" *ngIf="posts">
+    <app-posts *ngFor="let post of posts" [post]="post"></app-posts>
+</div>
+
