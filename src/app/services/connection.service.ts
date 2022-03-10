@@ -37,16 +37,15 @@ export class ConnectionService {
 
  getUsers(): Observable<User[]>{
   return this.http.get<User[]>('https://jsonplaceholder.typicode.com/users');                 
-  
-}
+ }
 
- getSingleUser(id: string): Observable<User>{
-  return this.http.get<User>('https://jsonplaceholder.typicode.com/users/'+id);     
-  
-  
+
+ getSingleUser(id: number): Observable<User>{
+  return this.http.get<User>('https://jsonplaceholder.typicode.com/users/'+id);       
  }
  
- getPosts(id: string): Observable<Posts[]>{
+ 
+ getPosts(id: number): Observable<Posts[]>{
    return this.http.get<Posts[]>('https://jsonplaceholder.typicode.com/posts/?userId='+id);
  }
 

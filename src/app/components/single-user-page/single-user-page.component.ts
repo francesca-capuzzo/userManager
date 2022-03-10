@@ -5,13 +5,15 @@ import { Posts } from 'src/app/model/posts';
 import { User } from 'src/app/model/user';
 import { ConnectionService } from 'src/app/services/connection.service';
 import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+
 
 @Component({
   selector: 'app-single-user-page',
   templateUrl: './single-user-page.component.html',
   styleUrls: ['./single-user-page.component.scss']
 })
+
+
 export class SingleUserPageComponent implements OnInit {
 
   user?: User;
@@ -19,21 +21,31 @@ export class SingleUserPageComponent implements OnInit {
   company?: Company;
   posts: Posts[] = [];
   
-  constructor(private connServ: ConnectionService, private route: ActivatedRoute, private location: Location) { }
+
+
+  constructor(private connServ: ConnectionService, private route: ActivatedRoute) {
+    
+   }
+
 
   ngOnInit(): void {
 
-    this.connServ.getSingleUser("5").subscribe(user => this.user = user);
+    const idS = this.route.snapshot.paramMap.get('id');
+    let id = 0;
+    if(idS){
+      id = parseInt(idS);
+    }
+    this.connServ.getSingleUser(id).subscribe(user => this.user = user);
     
   }
 
+
+
   loadPosts(){
-    return this.connServ.getPosts("id").subscribe(post => this.posts = post);
+    if (this.user) {
+      this.connServ.getPosts(this.user?.id).subscribe(post => this.posts = post);
+    }
+    
   }
 
-  getId(): void {
-    const id = String(this.route.snapshot.paramMap.get('id'));
-    this.connServ.getSingleUser(id)
-      .subscribe(user => this.user = user);
-  }
 }

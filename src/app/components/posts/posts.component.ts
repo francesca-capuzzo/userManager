@@ -10,7 +10,6 @@ export class PostsComponent implements OnInit {
 
   @Input() post?: Posts;
 
-
   constructor() { }
 
   ngOnInit(): void {
